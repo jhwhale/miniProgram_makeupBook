@@ -1,0 +1,35 @@
+/* pages/wishingList/wishingList.wxss */
+.wishingList{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  font-size: 40rpx;
+}
+
+.lesson{
+  height: 190rpx;
+  padding-left: 20rpx;
+}
+
+.lessonPic{
+  position: absolute;
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.lessonName{
+  position: absolute;
+  margin-left: 220rpx;
+  font-size: 35rpx;
+}
+
+.lessonIntroduce{
+  position: absolute;
+  margin-left: 220rpx;
+  margin-top: 60rpx;
+  margin-right: 20rpx;
+  color: rgb(185,161,161);
+  font-size: 28rpx;
+}

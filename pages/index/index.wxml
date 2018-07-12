@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class='searchBar'>
+    <input class='input' placeholder='输入搜索内容'></input>
+    <button class='searchBtn'>search</button>
+  </view>
+
+  <scroll-view class='productList'>
+    <view class='product' wx:for="{{list}}">
+      <image class='pic' src='{{item.imgPath}}'></image>
+      <text class='name'>{{item.name}}</text>
+      <text class='info'>{{item.comment}}</text> 
+    </view> 
+  </scroll-view> 
+
+  <button class='add' bindtap='addNew'>add</button> 
+  <button class='refresh' bindtap='getAllProduct'>刷新</button>
+  <button class='clear'bindtap='clear'>clear</button>
+</view>

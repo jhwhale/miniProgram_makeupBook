@@ -1,0 +1,29 @@
+<!--pages/wishingList/wishingList.wxml-->
+<view>
+  <view class='wishingList'>
+    <text>wishing list</text>
+  </view>
+
+  <view>
+    <view wx:for="{{list}}" wx:key="id">
+      <view class='lesson' bindtap="powerDrawer" data-statu="open" id="{{item.id}}">
+        <image class='lessonPic' src="{{item.src}}"></image>
+        <view class="lessonName">{{item.name}}</view>
+        <view class='lessonIntroduce'>{{item.introduce}}</view>
+        <view class='drawer_box' wx:if="{{item.showModalStatus}}" id="{{item.id}}">
+          <view class='title'>{{item.name}}</view>
+          <view class='drawer_content'>
+            <view class='title' wx:for="{{item.catalog}}" wx:for-item="catalog" wx:key="id">
+            {{catalog.section}}
+            </view>
+          </view>
+        </view>
+        <view class='btn_ok' bindtap='powerDrawer' data-statu="close" id="{{item.id}}">确定</view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class='drawer_screen' data-statu="close" wx:if="{{showModalStatus}}"></view>
+</view>

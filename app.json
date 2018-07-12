@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/wishingList/wishingList",
+    "pages/stockPile/stockPile",
+    "pages/edit/edit"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "美妆小本本",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color":"#aaa",
+    "selectedColor":"black",
+    "backgroundColor":"#fff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "hitpaning",
+      "iconPath": "images/icon_component.png",
+      "selectedIconPath": "images/icon_component_HL.png"
+    },
+    {
+      "pagePath":"pages/stockPile/stockPile",
+      "text":"stockpile",
+      "iconPath": "images/icon_API.png",
+      "selectedIconPath": "images/icon_API_HL.png"
+    },
+    {
+      "pagePath": "pages/wishingList/wishingList",
+      "text": "wishingList",
+      "iconPath": "images/icon_API.png",
+      "selectedIconPath": "images/icon_API_HL.png"
+    }]
+  }
+}
