@@ -2,18 +2,18 @@
 <form class='form' bindsubmit='submit'>
   <view class='head'>
     <image src="{{imgPath}}" bindtap='chooseImg'></image> 
-    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='20'></input>
+    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='20' value='{{name}}'></input>
   </view>
 
   <view class='body'>
     <view class='cell'>
       <view class='property'>
         <text>规格：</text>
-        <input name="size" class='inputBox'></input>
+        <input name="size" class='inputBox' value='{{size}}'></input>
       </view>
       <view class='property'>
         <text>色号：</text>
-        <input name="color" class='inputBox'></input>
+        <input name="color" class='inputBox' value='{{color}}'></input>
       </view>
     </view>
     <view class='cell'>
@@ -25,7 +25,7 @@
       </view>
       <view class='property'>
         <text>价格：¥</text>
-        <input name="price" class='inputBox' type="number"></input>
+        <input name="price" class='inputBox' type="number" value='{{price}}'></input>
       </view>
     </view>
 
@@ -50,7 +50,7 @@
     </view>
 
     <text class="commentTxt">备注：</text>
-    <textarea name="comment" class="comment" placeholder="爱写不写。。。" />
+    <textarea name="comment" class="comment" placeholder="爱写不写。。。" value='{{comment}}'/>
   </view>
 
    <view class="btn-area">

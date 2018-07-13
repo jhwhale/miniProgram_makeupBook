@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:0,
     name:'',
     openDate: '',
     hitpanDate: '',
@@ -11,25 +12,51 @@ Page({
     expireDate: ["3M", "6M", "12M", "24M", "36M","60M"],
     index:0,
     imgPath:"../../images/plus.png",
+    size:'',
+    color:'',
+    price:'',
+    comment:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var today = this.getToday();
-    this.setData({
-      openDate: today,
-      hitpanDate: today,
-      emptyDate: today,
-    })
+  onLoad: function (params) {
+    if(params['id']=='new'){//如果是新建记录
+      //添加新产品时，将picker中的日期设为当天日期
+      var today = this.getToday();
+      this.setData({
+        openDate: today,
+        hitpanDate: today,
+        emptyDate: today,
+      })
+    }else{      //如果不是新建，打开相应页面
+      var id = params['id']
+      var value = wx.getStorageSync(id)
+
+      this.setData({
+        name: value.name,
+        openDate: value.openDate,
+        hitpanDate: value.hitpanDate,
+        emptyDate: value.emptyDate,
+        index: value.expireDate,
+        imgPath: value.imgPath,
+        size: value.size,
+        color: value.color,
+        price: value.price,
+        comment: value.comment,
+        id:value.id,
+      })
+    }
+    
+
+
   },
 
   getTimeStamp:function(){
     //获取当前时间戳
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
-    console.log("当前时间戳为：" + timestamp);
     return timestamp;
   },
 
@@ -116,7 +143,6 @@ Page({
     this.setData({
       emptyDate: e.detail.value
     })
-    console.log(e.detail.value)
   },
 
   expireDateChange: function (e) {
@@ -132,7 +158,6 @@ Page({
       sizeType: "compressed",
       count: 1,
       success: function (res) {
-        console.log(res)
         that.setData({
           imgPath: res.tempFilePaths[0]
         })
@@ -140,32 +165,45 @@ Page({
     })
   },
   
+  
+
   submit:function(e) {
-    // var app = getApp();
-    // console.log(app.globalData.list)
-    console.log(e.detail.value)
+    var id = this.data.id.toString()
+    console.log("id: ",id)
+    var objData = e.detail.value
     
-    var objData = e.detail.value;
-    if(objData.name){
-      //如果没添加图片，将图片路径设置为空字符串
-      if (this.data.imgPath == "../../images/plus.png"){
-        this.setData({
-          imgPath:""
-        })
-      }
-      //将图片路径加入objData
-      Object.assign(objData, {imgPath: this.data.imgPath})
 
-      //以时间戳为key，将数据存入缓存
-      wx.setStorageSync(
-        this.getTimeStamp().toString(), 
-        objData
+    console.log("changed?",objData)
+    if(objData.name){//如果已经输入了name
+      if (id != 0) {//如果是修改已有数据
+        console.log('update')
+        //将图片路径加入objData
+        Object.assign(objData, { imgPath: this.data.imgPath })
+        Object.assign(objData,{id:id})
+        wx.setStorageSync(id, objData)
+
+      }else{//如果是新建数据
+        console.log("new")
+        //如果没添加图片，将图片路径设置为空字符串
+        if (this.data.imgPath == "../../images/plus.png") {
+          this.setData({
+            imgPath: ""
+          })
+        }
+
+        //将图片路径加入objData
+        Object.assign(objData, { imgPath: this.data.imgPath })
+
+        //将时间戳作为id加入objData
+        var key = this.getTimeStamp().toString()
+        Object.assign(objData, { id: key })
+
+        //以时间戳为key，将数据存入缓存
+        wx.setStorageSync(
+          key,
+          objData
         )
-
-      // //将数据保存至globalData.list
-      // var i = app.globalData.list.length;
-      // app.globalData.list[i] = objData;
-      // console.log(app.globalData.list);
+      }
 
       wx.reLaunch({
         url: '../index/index',

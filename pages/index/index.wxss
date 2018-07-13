@@ -14,7 +14,7 @@
   /* align-items: stretch; */
   padding: 10rpx 20rpx;
   background-color: #F8F8F8;
-
+  z-index: 1;
 } 
 
 .input {
@@ -37,7 +37,7 @@
 }
 
 .productList{
-  z-index: -1;
+  /* z-index: -1; */
   position: absolute;
   top: 70rpx;
   
@@ -60,13 +60,14 @@
 .name{
   position: absolute;
   margin-left: 220rpx;
+  margin-top: 20rpx;
   font-size: 35rpx;
 }
 
 .info{
   position: absolute;
   margin-left: 220rpx;
-  margin-top: 60rpx;
+  margin-top: 80rpx;
   margin-right: 20rpx;
   color: rgb(185,161,161);
   font-size: 28rpx;
@@ -79,16 +80,9 @@
   background: #b4d145;
 }
 
-.refresh{
-  position: fixed;
-  bottom: 30rpx;
-  right: 200rpx;
-  background: #b4d145;
-}
-
 .clear{
   position: fixed;
   bottom: 30rpx;
-  right: 400rpx;
+  right: 200rpx;
   background: #b4d145;
 }

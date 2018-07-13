@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    list:[{test:"test"}]
+    list:[]
   },
 
   onLoad: function () {
@@ -31,12 +31,12 @@ Page({
         });
       }
     }
-    console.log("templist: ",tempList)
-    console.log("list before: ",this.data.list)
+    // console.log("templist: ",tempList)
+    // console.log("list before: ",this.data.list)
     this.setData({
       list: tempList,
     }) 
-    console.log("list after: ", this.data.list)
+    // console.log("list after: ", this.data.list)
   },
 
   // getUserInfo: function(e) {
@@ -50,47 +50,20 @@ Page({
 
   addNew:function(){
     wx.navigateTo({
-      url: '../edit/edit',
+      url: '../edit/edit?id=new',
     })
   },
 
-  refresh:function(){
-    try {
-      var res = wx.getStorageInfoSync()
-      console.log(res.keys)
-      console.log(res.currentSize)
-      console.log(res.limitSize)
-    } catch (e) {
-      // Do something when catch error
-    }
-  },
 
   clear:function(){
     wx.clearStorageSync()
   },
 
-  getAllProduct:function(){
-    try {
-      var res = wx.getStorageInfoSync()
-      console.log(res.keys)
-    } catch (e) {
-      wx.showToast({
-        title: '!!!出问题啦，请待会儿再试!!!',
-        icon: 'none',
-      });
-    }
 
-    for (var i = 0; i < res.keys.length;i++){
-      console.log("key: " + res.keys[i])
-      
-      this.data.list.push(wx.getStorageSync(res.keys[i]))
-      this.setData({
-        list:this.data.list
-      })
-      // console.log("list: "+this.data.list[i])
-      console.log(this.data.list)//array.object
-    }
-
+  openEditPage: function(e){
+    wx.navigateTo({
+      url: '../edit/edit?id='+e.currentTarget.id,
+    })
   },
 
 })
