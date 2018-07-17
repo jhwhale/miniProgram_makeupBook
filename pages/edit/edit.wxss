@@ -44,6 +44,7 @@ image{
 .cell{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .property{
@@ -75,6 +76,7 @@ image{
   flex-direction: row;
   justify-content: center;
   padding: 5rpx 0rpx;
+
 }
 .datePicker:before {
   content: " ";
@@ -95,6 +97,14 @@ image{
   height: 1px;
   border-bottom: 1rpx solid #D9D9D9;
   color: #D9D9D9;
+}
+
+.datePicker_hidden{
+  height: 0;
+  overflow: hidden;
+}
+.datePicker_show{
+  height: auto;
 }
 
 picker{

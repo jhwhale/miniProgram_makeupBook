@@ -8,7 +8,7 @@
   <scroll-view class='productList'> 
     <view class='product' wx:for="{{list}}" bindtap='openEditPage' wx:key="item" id="{{item.id}}"> 
       <image class='pic' src='{{item.imgPath}}'></image>
-      <text class='name'>{{item.name}}</text>
+      <text class='name'>{{item.name}} {{item.color}}</text>
       <text class='info'>{{item.comment}}</text>  
     </view> 
   </scroll-view>  

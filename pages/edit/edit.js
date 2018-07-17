@@ -1,4 +1,13 @@
 // pages/edit/edit.js
+
+/*
+TODOs:
+没添加图片的设置默认图片
+设置开启开关，打开后方可进入使用状态，关闭时为库存状态
+增加完成开关，打开后方可设置完成日期
+设置为完成并保存后，数据进入‘完成列表页‘
+*/
+
 Page({
   /**
    * 页面的初始数据
@@ -16,6 +25,8 @@ Page({
     color:'',
     price:'',
     comment:'',
+    isOpened:true,
+    isEmpty:false,
   },
 
   /**
@@ -33,7 +44,6 @@ Page({
     }else{      //如果不是新建，打开相应页面
       var id = params['id']
       var value = wx.getStorageSync(id)
-
       this.setData({
         name: value.name,
         openDate: value.openDate,
@@ -47,6 +57,11 @@ Page({
         comment: value.comment,
         id:value.id,
       })
+      if (value.imgPath == "../../images/makeup.jpeg") {
+        this.setData({
+          imgPath: "../../images/plus.png"
+        })
+      }
     }
     
 
@@ -167,13 +182,10 @@ Page({
   
   
 
-  submit:function(e) {
+  submit: function(e) {
     var id = this.data.id.toString()
-    console.log("id: ",id)
     var objData = e.detail.value
     
-
-    console.log("changed?",objData)
     if(objData.name){//如果已经输入了name
       if (id != 0) {//如果是修改已有数据
         console.log('update')
@@ -187,7 +199,7 @@ Page({
         //如果没添加图片，将图片路径设置为空字符串
         if (this.data.imgPath == "../../images/plus.png") {
           this.setData({
-            imgPath: ""
+            imgPath: "../../images/makeup.jpeg"
           })
         }
 
@@ -216,10 +228,51 @@ Page({
     }
   },
 
-  cancel:function(){
-    wx.navigateBack({
-      delta: 1,
-    })
-  }
+  cancel:function(e){
 
+    wx.showModal({
+      content: '确定不保存？',
+      confirmText: "不保存",
+      cancelText: "再改改",
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateBack({
+            delta: 1,
+          })
+        } 
+      }
+    })
+    
+  },
+
+  openChange:function(e){
+    var openStatus = e.detail.value
+    if(openStatus==true){
+      this.setData({
+        isOpened: openStatus,
+      })
+    }else{
+      this.setData({
+        isOpened:openStatus,
+        isEmpty:false,
+      })
+    }
+
+  },
+
+  emptyChange:function(e){
+    var emptyStatus = e.detail.value
+    if(emptyStatus==true){
+      this.setData({
+        isOpened:true,
+        isEmpty:emptyStatus,
+      })
+    } else {
+        this.setData({
+          isEmpty: emptyStatus,
+        })
+    }
+  }
+    
+  
 })

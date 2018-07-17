@@ -22,40 +22,55 @@
         <picker name='expireDate' class='expireDatePicker' range="{{expireDate}}" value='{{index}}' bindchange='expireDateChange'>
         <view>{{expireDate[index]}}</view>
         </picker>
-      </view>
-      <view class='property'>
+       </view>
+      <view class='property'> 
         <text>价格：¥</text>
         <input name="price" class='inputBox' type="number" value='{{price}}'></input>
       </view>
     </view>
 
-    <view class='datePicker'>
-      <text>开封日期：</text>
-      <picker name="openDate" mode="date" value="{{openDate}}" start="2018-01-01" end="2028-01-01" bindchange="openDateChange">
-        <view>{{openDate}}</view>
-      </picker>
-    </view>
-    
-    <view class='datePicker'>
-      <text>铁皮日期：</text>
-      <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2018-01-01" end="2028-01-01" bindchange="hitpanDateChange">
-        <view>{{hitpanDate}}</view>
-      </picker>
-    </view>
-    <view class='datePicker'>
-      <text>空盘日期：</text>
-      <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2018-01-01" end="2028-01-01" bindchange="emptyDateChange">
-        <view>{{emptyDate}}</view>
-      </picker>
+    <view class='cell'>
+
+      <text>{{isOpened?"已开封":"未开封"}}</text>
+      <switch checked="{{isOpened}}" bindchange="openChange"/>
+
+      <text>{{isEmpty?"已空盘":"未空盘"}}</text>
+      <switch checked="{{isEmpty}}" bindchange='emptyChange'/>
+
     </view>
 
+    <view class="{{isOpened ? 'datePicker_show' : 'datePicker_hidden'}}">
+      <view class="datePicker">
+        <text>开封日期：</text>
+        <picker name="openDate" mode="date" value="{{openDate}}" start="2018-01-01" end="2028-01-01" bindchange="openDateChange">
+          <view>{{openDate}}</view>
+        </picker>
+      </view>
+      
+      <view class="datePicker {{isOpened ? 'datePicker_show' : ''}}">
+        <text>铁皮日期：</text>
+        <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2018-01-01" end="2028-01-01" bindchange="hitpanDateChange">
+          <view>{{hitpanDate}}</view>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class="{{isEmpty ? 'datePicker_show' : 'datePicker_hidden'}}">
+      <view class="datePicker">
+        <text>空盘日期：</text>
+        <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2018-01-01" end="2028-01-01" bindchange="emptyDateChange">
+          <view>{{emptyDate}}</view>
+        </picker>
+      </view>
+    </view>
     <text class="commentTxt">备注：</text>
-    <textarea name="comment" class="comment" placeholder="爱写不写。。。" value='{{comment}}'/>
+    <textarea name="comment" class="comment" placeholder="就。爱写不写。。。" value='{{comment}}'/>
   </view>
 
    <view class="btn-area">
     <button type="primary" formType="submit" size="mini">保存</button>
-    <button formType="reset" size="mini">重填</button>
+    <!-- <button formType="reset" size="mini">重填</button> -->
     <button size="mini" bindtap='cancel'>取消</button>
   </view> 
 </form>

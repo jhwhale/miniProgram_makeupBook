@@ -1,2 +1,2 @@
 <!--pages/stockPile/stockPile.wxml-->
-<text>pages/stockPile/stockPile.wxml</text>
+<input value='{{txt}}'></input>

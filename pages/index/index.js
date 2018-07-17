@@ -1,4 +1,11 @@
 //index.js
+
+/*
+TODOs:
+删除功能
+搜索功能
+*/
+
 //获取应用实例
 const app = getApp()
 

@@ -1,11 +1,11 @@
-// pages/stockPile/stockPile.js
+// pages/doneList/doneList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    txt:"lll"
+  
   },
 
   /**
