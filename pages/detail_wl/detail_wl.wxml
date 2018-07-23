@@ -1,0 +1,26 @@
+<!--pages/detail_wl/detail_wl.wxml-->
+<form class='form' bindsubmit='submit'>
+  <view class='head'>
+    <image src="{{imgPath}}" bindtap='chooseImg'></image> 
+    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='20' value='{{name}}'></input>
+  </view>
+
+  <view class='body'>
+    <view class='cell'>
+      <view class='property'>
+        <text>色号：</text>
+        <input name="color" class='inputBox' value='{{color}}'></input>
+      </view>
+    </view>
+
+    <text class="commentTxt">备注：</text>
+    <textarea name="comment" class="comment" placeholder="就。爱写不写。。。" value='{{comment}}'/>
+  </view>
+
+   <view class="btn-area">
+    <button type="primary" formType="submit" size="mini">保存</button>
+    <!-- <button formType="reset" size="mini">重填</button> -->
+    <button size="mini" bindtap='cancel'>取消</button>
+    <button size='mini' bindtap='bought'>已购入</button>
+  </view> 
+</form>

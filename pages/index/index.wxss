@@ -1,9 +1,5 @@
 /**index.wxss**/
-.container{
-  display: flex;
-  flex-direction: column;
-
-}
+@import "../common/list.wxss";
 
 .searchBar {
   display: flex;
@@ -34,50 +30,6 @@
   font-size: 32rpx; */
   /* flex:0.2; */
   height: 100%;
-}
-
-.productList{
-  /* z-index: -1; */
-  position: absolute;
-  top: 70rpx;
-  
-}
-
-.product{
-  height: 150rpx;
-  margin-left: 20rpx;
-  margin-top:20rpx;
-  margin-right: 20rpx;
-  background-color: #FFFFFF;
-}
-
-.pic{
-  position: absolute;
-  height: 150rpx;
-  width: 150rpx;
-}
-
-.name{
-  position: absolute;
-  margin-left: 220rpx;
-  margin-top: 20rpx;
-  font-size: 35rpx;
-}
-
-.info{
-  position: absolute;
-  margin-left: 220rpx;
-  margin-top: 80rpx;
-  margin-right: 20rpx;
-  color: rgb(185,161,161);
-  font-size: 28rpx;
-} 
-
-.add{
-  position: fixed;
-  bottom: 30rpx;
-  right: 30rpx;
-  background: #b4d145;
 }
 
 .clear{
