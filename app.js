@@ -33,6 +33,16 @@ App({
       }
     })
   },
+
+  getTimeStamp: function () {
+    //获取当前时间戳
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp/1000;
+    return timestamp.toString();
+  },
+
+
+
   globalData: {
     userInfo: null,
     list:[]

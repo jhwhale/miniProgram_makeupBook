@@ -1,11 +1,13 @@
 {
   "pages":[
-    
-    "pages/index/index",
-    "pages/wishingList/wishingList",
     "pages/stockPile/stockPile",
+    "pages/wishlist/wishlist",
+    "pages/index/index",
+    "pages/edit/edit",
+    
     "pages/doneList/doneList",
-    "pages/edit/edit"
+    
+    "pages/detail_wl/detail_wl"  
     
   ],
   "window":{
@@ -31,8 +33,8 @@
       "selectedIconPath": "images/icon_API_HL.png"
     },
     {
-      "pagePath": "pages/wishingList/wishingList",
-      "text": "Wishing List",
+      "pagePath": "pages/wishlist/wishlist",
+      "text": "Wish List",
       "iconPath": "images/icon_API.png",
       "selectedIconPath": "images/icon_API_HL.png"
     },

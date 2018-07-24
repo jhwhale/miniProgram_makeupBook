@@ -1,0 +1,2 @@
+/* pages/wishingList/wishingList.wxss */
+@import "../common/list.wxss"

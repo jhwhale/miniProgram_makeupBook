@@ -1,0 +1,86 @@
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.productList{
+  /* z-index: -1; */
+  position: absolute;
+  top: 70rpx;
+  
+}
+
+.product{
+  height: 150rpx;
+  margin-left: 20rpx;
+  margin-top:20rpx;
+  margin-right: 20rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+}
+.leftCard{
+  flex: 5;
+  height: 150rpx;
+}
+
+.rightCard{
+  flex: 1;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+}
+.pic{
+  position: absolute;
+  height: 150rpx;
+  width: 150rpx;
+}
+
+.name{
+  position: absolute;
+  margin-left: 220rpx;
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+
+.info{
+  position: absolute;
+  margin-left: 220rpx;
+  margin-top: 80rpx;
+  margin-right: 20rpx;
+  color: rgb(185,161,161);
+  font-size: 28rpx;
+} 
+
+.add{
+  position: fixed;
+  bottom: 30rpx;
+  right: 30rpx;
+  background: #b4d145;
+}
+
+.btnInCard{
+  position: absolute;
+  margin-left: 10rpx; 
+  margin-top: 10rpx;
+  line-height: 21px;
+  height: 22px;
+  width: 40px;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;  
+}
+
+.delete{
+  position: absolute;
+  margin-left: 10rpx; 
+  margin-top: 90rpx;
+  /* background-color: #dc8239; */
+  color: #ff0000;
+  line-height: 21px;
+  height: 22px;
+  width: 40px;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px; 
+}

@@ -6,60 +6,70 @@
   </view>
 
   <view class='body'>
+    <!-- <view class='cell'>
+      <text>{{buy?"已购买":"未购买"}}</text>
+      <switch checked="{{buy}}" bindchange="buyChange"/>
+      <text>{{open?"已开封":"未开封"}}</text>
+      <switch checked="{{open}}" bindchange="openChange"/>
+      <text>{{empty?"已空盘":"未空盘"}}</text>
+      <switch checked="{{empty}}" bindchange='emptyChange'/>
+
+    </view>  -->
+
     <view class='cell'>
-      <view class='property'>
-        <text>规格：</text>
-        <input name="size" class='inputBox' value='{{size}}'></input>
-      </view>
       <view class='property'>
         <text>色号：</text>
         <input name="color" class='inputBox' value='{{color}}'></input>
       </view>
-    </view>
-    <view class='cell'>
-      <view class='property'>
-        <text>使用期限：</text>
-        <picker name='expireDate' class='expireDatePicker' range="{{expireDate}}" value='{{index}}' bindchange='expireDateChange'>
-        <view>{{expireDate[index]}}</view>
-        </picker>
-       </view>
-      <view class='property'> 
-        <text>价格：¥</text>
+      <view class="property {{status>0?'property_show':'property_hidden'}}"> 
+        <text>单价：¥</text>
         <input name="price" class='inputBox' type="number" value='{{price}}'></input>
+      </view>
+      <view class="property {{status>0?'property_show':'property_hidden'}}">
+        <text>规格：</text>
+        <input name="size" class='inputBox' value='{{size}}'></input>
+      </view>
+    </view>
+    <!-- <view class="cell >
+      
+      <view class="property {{status==1 ? 'property_hidden':'property_show'}}">
+        <text>数量：</text>
+         <input name="amount" class='inputBox' value='{{amount}}'></input> 
+        <zan-stepper name="amount" stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" max="{{ stepper.max }}" bind:change="handleZanStepperChange"></zan-stepper>
+      </view>
+      
+    </view> -->
+
+    <view class="{{status>0 ? 'property_show' : 'property_hidden'}}">
+      <view class="datePicker">
+        <text>使用期限：</text>
+        <picker name="expireDate" mode='date' value='{{expireDate}}' start="2017-01-01" end="2017-12-31" bindchange="expireDateChange">
+          <view>{{expireDate}}</view>
+        </picker>
       </view>
     </view>
 
-    <view class='cell'>
-
-      <text>{{isOpened?"已开封":"未开封"}}</text>
-      <switch checked="{{isOpened}}" bindchange="openChange"/>
-
-      <text>{{isEmpty?"已空盘":"未空盘"}}</text>
-      <switch checked="{{isEmpty}}" bindchange='emptyChange'/>
-
-    </view>
-
-    <view class="{{isOpened ? 'datePicker_show' : 'datePicker_hidden'}}">
+    <view class="{{status>1 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>开封日期：</text>
-        <picker name="openDate" mode="date" value="{{openDate}}" start="2018-01-01" end="2028-01-01" bindchange="openDateChange">
+        <picker name="openDate" mode="date" value="{{openDate}}" start="2017-01-01" end="2017-12-31" bindchange="openDateChange">
           <view>{{openDate}}</view>
         </picker>
       </view>
       
-      <view class="datePicker {{isOpened ? 'datePicker_show' : ''}}">
+      <view class="datePicker">
         <text>铁皮日期：</text>
-        <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2018-01-01" end="2028-01-01" bindchange="hitpanDateChange">
+        <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2017-01-01" end="2017-12-31" bindchange="hitpanDateChange">
           <view>{{hitpanDate}}</view>
         </picker>
       </view>
     </view>
 
 
-    <view class="{{isEmpty ? 'datePicker_show' : 'datePicker_hidden'}}">
+    <view class="{{status==3 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>空盘日期：</text>
-        <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2018-01-01" end="2028-01-01" bindchange="emptyDateChange">
+        <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2017-01-01" end="2017-12-31" bindchange="emptyDateChange">
           <view>{{emptyDate}}</view>
         </picker>
       </view>
@@ -70,7 +80,11 @@
 
    <view class="btn-area">
     <button type="primary" formType="submit" size="mini">保存</button>
+    <!-- <button size="mini" formType="submit" id="multiSave">保存多份</button> -->
     <!-- <button formType="reset" size="mini">重填</button> -->
-    <button size="mini" bindtap='cancel'>取消</button>
+    <button size="mini" bindtap='cancelSave'>取消</button>
+
+
+
   </view> 
 </form>

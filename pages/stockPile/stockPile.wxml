@@ -1,2 +1,28 @@
 <!--pages/stockPile/stockPile.wxml-->
-<input value='{{txt}}'></input>
+<view class="container">
+  <scroll-view class='productList'> 
+    <view class='product' wx:for="{{list}}"  wx:key="item" > 
+      <view class='leftCard' bindtap='openEditPage' bindlongpress='copy' id="{{item.id}}">
+        <image class='pic' src='{{item.imgPath}}'></image>
+        <text class='name'>{{item.name}} {{item.color}}</text>
+        <text class='info'>{{item.comment}}</text>  
+      </view>
+      <view class='rightCard'>
+        <button class='btnInCard' bindtap='opened' id="{{item.id}}">已开封</button>
+        <button class='delete' bindtap='delete' id='{{item.id}}'>删除</button> 
+      </view>
+    </view> 
+  </scroll-view>  
+
+  <button class='add' bindtap='addNew'>add</button>
+  <modal id="modal" hidden="{{hiddenmodalput}}" confirm-text="确定" cancel-text="取消" bindcancel="cancelSetNum" bindconfirm="confirm">
+    <view class='modal'>
+      <text>选择复制数量：</text>
+      <zan-stepper name="amount" stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" max="{{ stepper.max }}" bind:change="handleZanStepperChange">
+      </zan-stepper>
+    </view>     
+  </modal> 
+</view>
+
+
+
