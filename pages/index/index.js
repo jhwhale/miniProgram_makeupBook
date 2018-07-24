@@ -15,6 +15,10 @@ Page({
   },
 
   onLoad: function () {
+
+  },
+
+  onShow: function(){
     try {
       var res = wx.getStorageInfoSync()
     } catch (e) {
@@ -24,11 +28,11 @@ Page({
       });
     }
 
-    var tempList =[];
+    var tempList = [];
     for (var i = 0; i < res.keys.length; i++) {
       try {
         var value = wx.getStorageSync(res.keys[i])
-        if (value) {
+        if (value.status == 2) {
           tempList.push(value)
         }
       } catch (e) {
@@ -38,12 +42,10 @@ Page({
         });
       }
     }
-    // console.log("templist: ",tempList)
-    // console.log("list before: ",this.data.list)
+
     this.setData({
       list: tempList,
     }) 
-    // console.log("list after: ", this.data.list)
   },
 
   // getUserInfo: function(e) {
@@ -57,10 +59,33 @@ Page({
 
   addNew:function(){
     wx.navigateTo({
-      url: '../edit/edit?id=new',
+      url: '../edit/edit?id=new&status=2',
     })
   },
 
+  done:function(e){
+    var id = e.currentTarget.id
+    var value = wx.getStorageSync(id)
+    value.status=3
+    wx.setStorageSync(id, value)
+    this.onShow()
+  },
+
+  delete: function (e) {
+    var that = this
+    wx.showModal({
+      content: "是否删除该条记录？",
+      confirmText: "删除",
+      cancelText: "取消",
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.removeStorageSync(e.currentTarget.id)
+          that.onShow()
+        }
+      }
+    })
+  },
 
   clear:function(){
     wx.clearStorageSync()
@@ -69,7 +94,7 @@ Page({
 
   openEditPage: function(e){
     wx.navigateTo({
-      url: '../edit/edit?id='+e.currentTarget.id,
+      url: '../edit/edit?id='+e.currentTarget.id+'&status=2',
     })
   },
 

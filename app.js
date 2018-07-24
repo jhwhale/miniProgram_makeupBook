@@ -41,7 +41,23 @@ App({
     return timestamp.toString();
   },
 
+  getToday: function () {
+    var timestamp = this.getTimeStamp();
 
+    //获取当前时间
+    var n = timestamp * 1000;
+    var date = new Date(n);
+    //年
+    var Y = date.getFullYear();
+    //月
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+
+    var today = Y + "-" + M + "-" + D;
+
+    return today;
+  },
 
   globalData: {
     userInfo: null,

@@ -1,2 +1,17 @@
 <!--pages/doneList/doneList.wxml-->
-<text>pages/doneList/doneList.wxml</text>
+<view class="container">
+
+  <!-- <view class='searchBar'>
+    <input class='input' placeholder='输入搜索内容'></input>
+    <button class='searchBtn'>search</button>
+  </view> -->
+  <scroll-view class='productList'> 
+    <view class='product' wx:for="{{list}}"  wx:key="item" > 
+      <view class='leftCard' bindtap='openEditPage' id="{{item.id}}">
+        <image class='pic' src='{{item.imgPath}}'></image>
+        <text class='name'>{{item.name}} {{item.color}}</text>
+        <text class='info'>{{item.comment}}</text>  
+      </view>
+    </view> 
+  </scroll-view>  
+</view>

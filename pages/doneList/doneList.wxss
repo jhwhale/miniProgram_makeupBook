@@ -1,1 +1,2 @@
 /* pages/doneList/doneList.wxss */
+@import "../common/list.wxss"

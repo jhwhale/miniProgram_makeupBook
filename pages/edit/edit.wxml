@@ -2,7 +2,7 @@
 <form class='form' bindsubmit='submit'>
   <view class='head'>
     <image src="{{imgPath}}" bindtap='chooseImg'></image> 
-    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='20' value='{{name}}'></input>
+    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='15' value='{{name}}'></input>
   </view>
 
   <view class='body'>
@@ -19,7 +19,7 @@
     <view class='cell'>
       <view class='property'>
         <text>色号：</text>
-        <input name="color" class='inputBox' value='{{color}}'></input>
+        <input name="color" class='inputBox' value='{{color}}'maxlength='8'></input>
       </view>
       <view class="property {{status>0?'property_show':'property_hidden'}}"> 
         <text>单价：¥</text>
@@ -30,20 +30,12 @@
         <input name="size" class='inputBox' value='{{size}}'></input>
       </view>
     </view>
-    <!-- <view class="cell >
-      
-      <view class="property {{status==1 ? 'property_hidden':'property_show'}}">
-        <text>数量：</text>
-         <input name="amount" class='inputBox' value='{{amount}}'></input> 
-        <zan-stepper name="amount" stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" max="{{ stepper.max }}" bind:change="handleZanStepperChange"></zan-stepper>
-      </view>
-      
-    </view> -->
+
 
     <view class="{{status>0 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>使用期限：</text>
-        <picker name="expireDate" mode='date' value='{{expireDate}}' start="2017-01-01" end="2017-12-31" bindchange="expireDateChange">
+        <picker name="expireDate" mode='date' value='{{expireDate}}' start="2017-01-01" end="2028-12-31" bindchange="expireDateChange">
           <view>{{expireDate}}</view>
         </picker>
       </view>
@@ -52,14 +44,14 @@
     <view class="{{status>1 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>开封日期：</text>
-        <picker name="openDate" mode="date" value="{{openDate}}" start="2017-01-01" end="2017-12-31" bindchange="openDateChange">
+        <picker name="openDate" mode="date" value="{{openDate}}" start="2017-01-01" end="2028-12-31" bindchange="openDateChange">
           <view>{{openDate}}</view>
         </picker>
       </view>
       
       <view class="datePicker">
         <text>铁皮日期：</text>
-        <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2017-01-01" end="2017-12-31" bindchange="hitpanDateChange">
+        <picker name="hitpanDate" mode='date' value='{{hitpanDate}}' start="2017-01-01" end="2028-12-31" bindchange="hitpanDateChange">
           <view>{{hitpanDate}}</view>
         </picker>
       </view>
@@ -69,7 +61,7 @@
     <view class="{{status==3 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>空盘日期：</text>
-        <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2017-01-01" end="2017-12-31" bindchange="emptyDateChange">
+        <picker name="emptyDate" mode='date' value='{{emptyDate}}' start="2017-01-01" end="2028-12-31" bindchange="emptyDateChange">
           <view>{{emptyDate}}</view>
         </picker>
       </view>
@@ -78,13 +70,8 @@
     <textarea name="comment" class="comment" placeholder="就。爱写不写。。。" value='{{comment}}'/>
   </view>
 
-   <view class="btn-area">
+  <view class="btn-area">
     <button type="primary" formType="submit" size="mini">保存</button>
-    <!-- <button size="mini" formType="submit" id="multiSave">保存多份</button> -->
-    <!-- <button formType="reset" size="mini">重填</button> -->
     <button size="mini" bindtap='cancelSave'>取消</button>
-
-
-
   </view> 
 </form>

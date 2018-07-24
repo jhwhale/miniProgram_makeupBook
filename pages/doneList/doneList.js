@@ -26,7 +26,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    try {
+      var res = wx.getStorageInfoSync()
+    } catch (e) {
+      wx.showToast({
+        title: '!!!getStorageInfoSync出问题啦!!!',
+        icon: 'none',
+      });
+    }
+
+    //将状态为0(want)的数据保存至list
+    var tempList = [];
+    for (var i = 0; i < res.keys.length; i++) {
+      try {
+        var value = wx.getStorageSync(res.keys[i])
+        if (value.status == 3) {
+          tempList.push(value)
+        }
+      } catch (e) {
+        wx.showToast({
+          title: '!!!getStorageSync出问题啦!!!',
+          icon: 'none',
+        });
+      }
+    }
+    this.setData({
+      list: tempList,
+    })
   },
 
   /**
@@ -62,5 +88,12 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+
+  openEditPage: function (e) {
+    console.log('open edit page: ', e)
+    wx.navigateTo({
+      url: '../edit/edit?id=' + e.currentTarget.id + '&status=3',
+    })
+  },
 })

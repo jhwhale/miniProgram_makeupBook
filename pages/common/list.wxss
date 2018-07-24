@@ -38,18 +38,38 @@
 
 .name{
   position: absolute;
-  margin-left: 220rpx;
+  margin-left: 190rpx;
   margin-top: 20rpx;
   font-size: 35rpx;
+
+  max-height:40rpx;
+  max-width: 400rpx;
+  line-height:20px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+
 }
 
 .info{
   position: absolute;
-  margin-left: 220rpx;
+  margin-left: 190rpx;
   margin-top: 80rpx;
   margin-right: 20rpx;
   color: rgb(185,161,161);
   font-size: 28rpx;
+
+  max-height:40px;
+  max-width: 400rpx;
+  line-height:30rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+
 } 
 
 .add{

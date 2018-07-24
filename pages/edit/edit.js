@@ -42,11 +42,11 @@ Page({
     
     if(params['id']=='new'){//如果是新建记录
       //添加新产品时，将picker中的日期设为当天日期
-      var today = this.getToday();
+      var today = app.getToday();
       this.setData({
         expireDate:today,
         openDate: today,
-        hitpanDate: today,
+        hitpanDate: '未空盘',
         emptyDate: today,
       })
     }else{      //如果不是新建，打开相应页面
@@ -70,23 +70,7 @@ Page({
 
 
 
-  getToday: function(){
-    var timestamp = app.getTimeStamp();
 
-    //获取当前时间
-    var n = timestamp * 1000;
-    var date = new Date(n);
-    //年
-    var Y = date.getFullYear();
-    //月
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-    //日
-    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-
-    var today = Y + "-" + M + "-" + D;
-
-    return today;
-  },
   
   /**
    * 生命周期函数--监听页面初次渲染完成

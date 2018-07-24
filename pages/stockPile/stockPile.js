@@ -165,51 +165,27 @@ Page({
   confirm:function(){
     var that = this
     var amount = that.data.stepper.stepper
-    console.log('amount: ', amount)
     var id = this.data.copyId
     var value = wx.getStorageSync(id)
+    var name = value.name
 
-    for(var i = 0;i<amount;i++){
-      console.log('i:', i)
+    for(var i = 1;i<amount+1;i++){
       //将时间戳作为id加入objData
       var key = new Date().getTime().toString()
-      console.log('key: ',key)
       value.id=key
+
+      value.name = i+'.'+name
 
       //以时间戳为key，将数据存入缓存
       wx.setStorageSync(key, value)
     }
 
     this.setData({
-      hiddenmodalput:true
+      hiddenmodalput:true,
+      'stepper.stepper':1,
     })
 
     this.onShow()
   },
 
-  getTime: function(){
-    //第一种方法   1498627266000
-    var timestamp1 = Date.parse(new Date());
-    console.log(timestamp1);
-    //第二种方法   1498627266558
-    var timestamp2 = (new Date()).valueOf();
-    console.log(timestamp2);
-    //第三种方法   1498627266558
-    var timestamp3 = new Date().getTime();
-    console.log(timestamp3);
-            
-    var myDate = new Date();
-    console.log(myDate.getFullYear()); //获取完整的年份(4位,1970-????)
-    console.log(myDate.getMonth()); //获取当前月份(0-11,0代表1月)
-    console.log(myDate.getDate()); //获取当前日(1-31)
-    console.log(myDate.getDay()); //获取当前星期X(0-6,0代表星期天)
-    console.log(myDate.getTime()); //获取当前时间(从1970.1.1开始的毫秒数)
-    console.log(myDate.getHours()); //获取当前小时数(0-23)
-    console.log(myDate.getMinutes()); //获取当前分钟数(0-59)
-    console.log(myDate.getSeconds()); //获取当前秒数(0-59)
-    console.log(myDate.getMilliseconds()); //获取当前毫秒数(0-999)
-    console.log(myDate.toLocaleDateString()); //获取当前日期
-    console.log(myDate.toLocaleTimeString()); //获取当前时间
-    console.log(myDate.toLocaleString()); //获取日期与时间
-  }
 })
