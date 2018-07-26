@@ -107,7 +107,6 @@ Page({
   },
 
   openEditPage: function (e) {
-    console.log('open edit page: ', e)
     wx.navigateTo({
       url: '../edit/edit?id=' + e.currentTarget.id + '&status=1',
     })
@@ -127,7 +126,6 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
           wx.removeStorageSync(e.currentTarget.id)
           that.onShow()
         }
@@ -139,7 +137,6 @@ Page({
     this.setData({
       hiddenmodalput:false
     })
-    console.log('copy: ',e)
     var id = e.currentTarget.id
     this.setData({
       copyId:id
@@ -153,7 +150,6 @@ Page({
     this.setData({
       'stepper.stepper': stepper
     });
-    console.log('stepper: ',this.data.stepper.stepper)
   },
 
   cancelSetNum:function(){

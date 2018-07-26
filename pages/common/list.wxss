@@ -82,7 +82,7 @@
 .btnInCard{
   position: absolute;
   margin-left: 10rpx; 
-  margin-top: 10rpx;
+  margin-top: 15rpx;
   line-height: 21px;
   height: 22px;
   width: 40px;

@@ -61,6 +61,7 @@ App({
 
   globalData: {
     userInfo: null,
+    // imgPath:'',
     list:[]
   }
 })

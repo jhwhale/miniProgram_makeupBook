@@ -97,14 +97,12 @@ Page({
   },
 
   openEditPage: function (e) {
-    console.log('open edit page: ',e)
     wx.navigateTo({
       url: '../edit/edit?id=' + e.currentTarget.id + '&status=0',
     })
   },
 
   bought: function(e){
-    console.log('bougth: ',e)
     wx.navigateTo({
       url: '../edit/edit?id='+e.currentTarget.id+'&status=1',
     })
@@ -118,7 +116,6 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
           wx.removeStorageSync(e.currentTarget.id)
           that.onShow()
         }

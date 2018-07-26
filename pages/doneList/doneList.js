@@ -91,7 +91,6 @@ Page({
   },
 
   openEditPage: function (e) {
-    console.log('open edit page: ', e)
     wx.navigateTo({
       url: '../edit/edit?id=' + e.currentTarget.id + '&status=3',
     })

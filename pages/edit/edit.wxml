@@ -6,20 +6,11 @@
   </view>
 
   <view class='body'>
-    <!-- <view class='cell'>
-      <text>{{buy?"已购买":"未购买"}}</text>
-      <switch checked="{{buy}}" bindchange="buyChange"/>
-      <text>{{open?"已开封":"未开封"}}</text>
-      <switch checked="{{open}}" bindchange="openChange"/>
-      <text>{{empty?"已空盘":"未空盘"}}</text>
-      <switch checked="{{empty}}" bindchange='emptyChange'/>
-
-    </view>  -->
 
     <view class='cell'>
       <view class='property'>
         <text>色号：</text>
-        <input name="color" class='inputBox' value='{{color}}'maxlength='8'></input>
+        <input name="color" class='inputBox' value='{{color}}'></input>
       </view>
       <view class="property {{status>0?'property_show':'property_hidden'}}"> 
         <text>单价：¥</text>
@@ -75,3 +66,9 @@
     <button size="mini" bindtap='cancelSave'>取消</button>
   </view> 
 </form>
+
+<canvas hidden='{{hide_canvas}}' id='cover-preview' bindtouchstart='canvas_start' bindtouchmove='canvas_move' bindtouchend='canvas_end' disable-scroll='true' canvas-id='cover-preview'>
+    <cover-view catchtap='upload_bg' id='croper-sure'>确定</cover-view>
+    <cover-view catchtap='cancel_croper' id='croper-cancel'>取消</cover-view>
+    <cover-view id='croper'></cover-view>
+</canvas>
