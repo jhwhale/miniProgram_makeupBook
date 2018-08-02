@@ -1,16 +1,10 @@
 <!--pages/wishingList/wishingList.wxml-->
 <view class="container">
   <scroll-view class='productList'> 
-    <view class='product' wx:for="{{list}}"  wx:key="item"> 
-      <view class='leftCard' bindtap='openEditPage' id="{{item.id}}">
-        <image class='pic' src='{{item.imgPath}}'></image>
-        <text class='name'>{{item.name}} {{item.color}}</text>
-        <text class='info'>{{item.comment}}</text>  
-      </view>
-      <view class='rightCard'>
-        <button class='btnInCard' bindtap='bought' id="{{item.id}}">已购买</button>
-        <button class='delete' bindtap='delete' id='{{item.id}}'>删除</button> 
-      </view>
+    <view class='product' wx:for="{{list}}"  wx:key="item" bindtap='openEditPage' id="{{item.id}}" bindlongpress="showActionSheet"> 
+      <image class='pic' src='{{item.imgPath}}'></image>
+      <text class='name'>{{item.name}} {{item.color}}</text>
+      <text class='info'>{{item.comment}}</text>  
     </view> 
   </scroll-view>  
 

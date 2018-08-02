@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    hiddenmodalput: true,
+    stepper: {
+      stepper: 1,
+      min: 1,
+      max: 100,
+      size: 'small'
+    },
+    copyId: ''
   },
 
   /**
@@ -94,5 +101,68 @@ Page({
     wx.navigateTo({
       url: '../edit/edit?id=' + e.currentTarget.id + '&status=3',
     })
+  },
+
+  showActionSheet: function (e) {
+    console.log(e)
+    var id = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['已回购'],
+      success: function (res) {
+        switch (res.tapIndex) {
+          case 0: that.boughtAgain(id); break;
+        }
+      }
+    })
+  },
+
+  boughtAgain:function(id){
+    this.setData({
+      hiddenmodalput: false,
+      copyId: id
+    })
+  },
+
+  handleZanStepperChange({
+    // stepper 代表操作后，应该要展示的数字，需要设置到数据对象里，才会更新页面展示
+    detail: stepper
+  }) {
+    this.setData({
+      'stepper.stepper': stepper
+    });
+  },
+
+  cancelSetNum: function () {
+    this.setData({
+      hiddenmodalput: true
+    })
+  },
+
+  confirm: function () {
+    var that = this
+    var amount = that.data.stepper.stepper
+    var id = this.data.copyId
+    var value = wx.getStorageSync(id)
+    var name = value.name
+
+    for (var i = 1; i < amount + 1; i++) {
+      //将时间戳作为id加入objData
+      var key = new Date().getTime().toString()
+      value.id = key
+
+      value.name = i + '.' + name
+      value.status = 1
+
+      //以时间戳为key，将数据存入缓存
+      wx.setStorageSync(key, value)
+    }
+
+    this.setData({
+      hiddenmodalput: true,
+      'stepper.stepper': 1,
+    })
+
+    this.onShow()
   },
 })

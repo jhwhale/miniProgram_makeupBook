@@ -112,13 +112,13 @@ Page({
     })
   },
 
-  opened: function (e) {
+  opened: function (id) {
     wx.navigateTo({
-      url: '../edit/edit?id=' + e.currentTarget.id + '&status=2',
+      url: '../edit/edit?id=' + id + '&status=2',
     })
   },
 
-  delete: function (e) {
+  delete: function (id) {
     var that = this
     wx.showModal({
       content: "是否删除该条记录？",
@@ -126,20 +126,17 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          wx.removeStorageSync(e.currentTarget.id)
+          wx.removeStorageSync(id)
           that.onShow()
         }
       }
     })
   },
 
-  copy: function (e) {
+  copy: function (id) {
     this.setData({
-      hiddenmodalput:false
-    })
-    var id = e.currentTarget.id
-    this.setData({
-      copyId:id
+      hiddenmodalput:false,
+      copyId: id
     })
   },
 
@@ -184,4 +181,19 @@ Page({
     this.onShow()
   },
 
+  showActionSheet: function (e) {
+    console.log(e)
+    var id = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['将状态改为“已开封”','复制', '删除'],
+      success: function (res) {
+        switch (res.tapIndex) {
+          case 0: that.opened(id); break;
+          case 1: that.copy(id); break;
+          case 2: that.delete(id); break;
+        }
+      }
+    })
+  }
 })

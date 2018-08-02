@@ -6,12 +6,17 @@
     <button class='searchBtn'>search</button>
   </view> -->
   <scroll-view class='productList'> 
-    <view class='product' wx:for="{{list}}"  wx:key="item" > 
-      <view class='leftCard' bindtap='openEditPage' id="{{item.id}}">
-        <image class='pic' src='{{item.imgPath}}'></image>
-        <text class='name'>{{item.name}} {{item.color}}</text>
-        <text class='info'>{{item.comment}}</text>  
-      </view>
+    <view class='product' wx:for="{{list}}"  wx:key="item" bindtap='openEditPage' id="{{item.id}}" bindlongpress="showActionSheet"> 
+      <image class='pic' src='{{item.imgPath}}'></image>
+      <text class='name'>{{item.name}} {{item.color}}</text>
+      <text class='info'>{{item.comment}}</text>  
     </view> 
   </scroll-view>  
+  <modal id="modal" hidden="{{hiddenmodalput}}" confirm-text="确定" cancel-text="取消" bindcancel="cancelSetNum" bindconfirm="confirm">
+    <view class='modal'>
+      <text>选择回购数量：</text>
+      <zan-stepper name="amount" stepper="{{ stepper.stepper }}" min="{{ stepper.min }}" max="{{ stepper.max }}" bind:change="handleZanStepperChange">
+      </zan-stepper>
+    </view>     
+  </modal> 
 </view>

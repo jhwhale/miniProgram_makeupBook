@@ -102,13 +102,13 @@ Page({
     })
   },
 
-  bought: function(e){
+  bought: function(id){
     wx.navigateTo({
-      url: '../edit/edit?id='+e.currentTarget.id+'&status=1',
+      url: '../edit/edit?id='+id+'&status=1',
     })
   },
 
-  delete: function(e){
+  delete: function(id){
     var that = this
     wx.showModal({
       content: "是否删除该条记录？",
@@ -116,12 +116,25 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          wx.removeStorageSync(e.currentTarget.id)
+          wx.removeStorageSync(id)
           that.onShow()
         }
       }
     })  
   },
 
-  
+  showActionSheet: function (e) {
+    console.log(e)
+    var id = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['将状态改为“已购买”', '删除'],
+      success: function (res) {
+        switch (res.tapIndex) {
+          case 0: that.bought(id); break;
+          case 1: that.delete(id); break;
+        }
+      }
+    })
+  }  
 })

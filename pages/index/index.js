@@ -63,15 +63,15 @@ Page({
     })
   },
 
-  done:function(e){
-    var id = e.currentTarget.id
+  done:function(id){
+    // var id = e.currentTarget.id
     var value = wx.getStorageSync(id)
     value.status=3
     wx.setStorageSync(id, value)
     this.onShow()
   },
 
-  delete: function (e) {
+  delete: function (id) {
     var that = this
     wx.showModal({
       content: "是否删除该条记录？",
@@ -79,7 +79,7 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
-          wx.removeStorageSync(e.currentTarget.id)
+          wx.removeStorageSync(id)
           that.onShow()
         }
       }
@@ -97,9 +97,18 @@ Page({
     })
   },
 
-  test:function(){
-    wx.navigateTo({
-      url: '../test/test',
+  showActionSheet: function(e){
+    console.log(e)
+    var id = e.currentTarget.id
+    var that = this
+    wx.showActionSheet({
+      itemList: ['将状态改为“已用完”', '删除'],
+      success: function (res) {
+        switch (res.tapIndex){
+          case 0:that.done(id);break;
+          case 1:that.delete(id);break;
+        }
+      }
     })
   }
 })
