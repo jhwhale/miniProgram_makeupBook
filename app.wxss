@@ -24,5 +24,13 @@ page {
   justify-content: space-between;
   font-size: 32rpx;
   font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
 
+.note{
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  font-size: 32rpx;
+  text-align: center;
+  color: #999999;
 }

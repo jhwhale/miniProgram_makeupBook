@@ -1,0 +1,7 @@
+/* pages/searchResult/searchResult.wxss */
+@import "../common/list.wxss";
+
+.searchResult{
+  position: absolute;
+  top: 0;
+}

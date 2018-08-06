@@ -1,37 +1,6 @@
 /**index.wxss**/
 @import "../common/list.wxss";
 
-.searchBar {
-  display: flex;
-  position: fixed;
-  height: 60rpx;
-  width: 100%;  
-  /* justify-content: space-between; */
-  /* align-items: stretch; */
-  padding: 10rpx 20rpx;
-  background-color: #F8F8F8;
-  z-index: 1;
-} 
-
-.input {
-  /* width: 80%; */
-  flex: 1; 
-  margin-right: 20rpx;
-  background-color: #D9D9D9;
-  height: 100%;
-  border-radius:5px;
-  padding-left: 20rpx;
-}  
-
-.searchBtn {
-  /* height: 50rpx; */
-  /* width: 10%; */
-  /* padding-right: 20rpx; 
-  font-size: 32rpx; */
-  /* flex:0.2; */
-  height: 100%;
-}
-
 .clear{
   position: fixed;
   bottom: 30rpx;

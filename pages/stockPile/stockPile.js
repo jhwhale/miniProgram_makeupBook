@@ -151,7 +151,8 @@ Page({
 
   cancelSetNum:function(){
     this.setData({
-      hiddenmodalput: true
+      hiddenmodalput: true,
+      'stepper.stepper': 1
     })
   },
 
@@ -167,7 +168,7 @@ Page({
       var key = new Date().getTime().toString()
       value.id=key
 
-      value.name = i+'.'+name
+      value.name = name+"("+i+")"
 
       //以时间戳为key，将数据存入缓存
       wx.setStorageSync(key, value)

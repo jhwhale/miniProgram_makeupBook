@@ -1,5 +1,6 @@
 <!--pages/wishingList/wishingList.wxml-->
 <view class="container">
+  <searchBar></searchBar>
   <scroll-view class='productList'> 
     <view class='product' wx:for="{{list}}"  wx:key="item" bindtap='openEditPage' id="{{item.id}}" bindlongpress="showActionSheet"> 
       <image class='pic' src='{{item.imgPath}}'></image>

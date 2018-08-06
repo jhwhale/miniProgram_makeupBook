@@ -1,35 +1,7 @@
 <!--index.wxml-->
-<!-- <view class="container">
-
-  <view class='searchBar'>
-    <input class='input' placeholder='输入搜索内容'></input>
-    <button class='searchBtn'>search</button>
-  </view>
-  <scroll-view class='productList'> 
-    <view class='product' wx:for="{{list}}"  wx:key="item" > 
-      <view class='leftCard' bindtap='openEditPage' bindlongpress='copy' id="{{item.id}}">
-        <image class='pic' src='{{item.imgPath}}'></image>
-        <text class='name'>{{item.name}} {{item.color}}</text>
-        <text class='info'>{{item.comment}}</text>  
-      </view>
-      <view class='rightCard'>
-        <button class='btnInCard' bindtap='done' id="{{item.id}}">已用完</button>
-        <button class='delete' bindtap='delete' id='{{item.id}}'>删除</button> 
-      </view>
-    </view> 
-  </scroll-view>  
-
-  <button class='add' bindtap='addNew'>add</button>  
-  <button class='clear'bindtap='clear'>clear</button>
-</view> -->
-
-<!-- 将按钮写在action sheet里 -->
 <view class="container">
+  <searchBar></searchBar>
 
-  <view class='searchBar'>
-    <input class='input' placeholder='输入搜索内容'></input>
-    <button class='searchBtn'>search</button>
-  </view>
   <scroll-view class='productList'> 
     <view class='product' wx:for="{{list}}"  wx:key="item" bindlongpress='showActionSheet' bindtap='openEditPage'  id="{{item.id}}"> 
       <image class='pic' src='{{item.imgPath}}'></image>

@@ -1,1 +1,5 @@
-{}
+{
+    "usingComponents": {
+      "searchBar": "../../../component/searchBar/searchBar"
+    }
+}

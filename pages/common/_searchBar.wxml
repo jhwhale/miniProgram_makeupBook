@@ -1,0 +1,6 @@
+<template name="searchBar">
+  <view class='searchBar'>
+    <input class='input' name='searchInput' placeholder='输入搜索内容' value='{{keyword}}' bindinput='getKeyword'></input>
+    <view class='searchBtn' bindtap='search'>搜 索</view>
+  </view>
+</template>

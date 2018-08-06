@@ -1,15 +1,17 @@
-<!--pages/stockPile/stockPile.wxml-->
-<view class="container">
-  <searchBar></searchBar>
-  <scroll-view class='productList'> 
-    <view class='product' wx:for="{{list}}"  wx:key="item" bindtap='openEditPage' bindlongpress='showActionSheet' id="{{item.id}}"> 
+<!--pages/searchResult/searchResult.wxml-->
+<view hidden ="{{hideNote}}" class="container">
+  <view class='note'>无符合条件的结果</view>
+</view>
+
+<view hidden = "{{hideResult}}" class="container">
+  <!-- <searchBar input-text='{{keyword}}'></searchBar> -->
+  <scroll-view class='searchResult'> 
+    <view class='product' wx:for="{{list}}"  wx:key="item" bindlongpress='showActionSheet' bindtap='openEditPage'  id="{{item.id}}" data-status="{{item.status}}"> 
       <image class='pic' src='{{item.imgPath}}'></image>
       <text class='name'>{{item.name}} {{item.color}}</text>
       <text class='info'>{{item.comment}}</text>  
     </view> 
   </scroll-view>  
-
-  <button class='add' bindtap='addNew'>add</button>
   <modal id="modal" hidden="{{hiddenmodalput}}" confirm-text="确定" cancel-text="取消" bindcancel="cancelSetNum" bindconfirm="confirm">
     <view class='modal'>
       <text>选择复制数量：</text>
@@ -18,6 +20,3 @@
     </view>     
   </modal> 
 </view>
-
-
-

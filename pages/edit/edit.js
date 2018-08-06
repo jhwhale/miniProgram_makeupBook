@@ -147,6 +147,7 @@ Page({
   },
 
   submit: function(e) {
+    // console.log(e)
     var id = this.data.id
     var objData = e.detail.value
     

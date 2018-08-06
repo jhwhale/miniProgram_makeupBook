@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "zan-stepper": "../../../component/stepper/index"
+    "zan-stepper": "../../../component/stepper/index",
+    "searchBar": "../../../component/searchBar/searchBar"
   }
 }

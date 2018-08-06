@@ -1,0 +1,33 @@
+/* component/searchBar/searchBar.wxss */
+.searchBar {
+  display: flex;
+  position: fixed;
+  height: 70rpx;
+  width: 100%;
+  background-color: #FFFFFF;
+  z-index: 1;
+  flex-direction: row;
+  box-shadow: 0rpx 6rpx 10rpx #D9D9D9;
+} 
+
+.input {
+  width: 75%;
+  height: 60rpx;
+  background-color: #D9D9D9;
+  border-radius:5rpx;
+  padding-left: 20rpx;
+  position: absolute;
+  top: 0;
+  left: 20rpx;
+}  
+
+.searchBtn {
+  height: 60rpx;
+  width: auto;
+  /* line-height: 21px; */
+  font-size: 40rpx; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding:0 20rpx;
+}

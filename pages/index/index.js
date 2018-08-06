@@ -1,5 +1,5 @@
 //index.js
-
+// import tempObj from '../common/searchBar'
 /*
 TODOs:
 删除功能
@@ -48,15 +48,6 @@ Page({
     }) 
   },
 
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // },
-
   addNew:function(){
     wx.navigateTo({
       url: '../edit/edit?id=new&status=2',
@@ -64,7 +55,6 @@ Page({
   },
 
   done:function(id){
-    // var id = e.currentTarget.id
     var value = wx.getStorageSync(id)
     value.status=3
     wx.setStorageSync(id, value)
@@ -102,7 +92,7 @@ Page({
     var id = e.currentTarget.id
     var that = this
     wx.showActionSheet({
-      itemList: ['将状态改为“已用完”', '删除'],
+      itemList: ['已用完', '删除'],
       success: function (res) {
         switch (res.tapIndex){
           case 0:that.done(id);break;
@@ -112,4 +102,3 @@ Page({
     })
   }
 })
-

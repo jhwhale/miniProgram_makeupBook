@@ -1,10 +1,6 @@
 <!--pages/doneList/doneList.wxml-->
 <view class="container">
-
-  <!-- <view class='searchBar'>
-    <input class='input' placeholder='输入搜索内容'></input>
-    <button class='searchBtn'>search</button>
-  </view> -->
+  <searchBar></searchBar>
   <scroll-view class='productList'> 
     <view class='product' wx:for="{{list}}"  wx:key="item" bindtap='openEditPage' id="{{item.id}}" bindlongpress="showActionSheet"> 
       <image class='pic' src='{{item.imgPath}}'></image>
