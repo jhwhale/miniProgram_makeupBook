@@ -20,7 +20,7 @@ Page({
     hitpanDate: '',
     emptyDate: '',
     expireDate: '',
-    imgPath:"../../images/plus.png",
+    imgPath: "../../images/plus.png",
     size:'',
     color:'',
     price:'',

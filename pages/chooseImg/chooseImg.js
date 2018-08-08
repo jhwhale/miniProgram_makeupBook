@@ -3,6 +3,8 @@
 TODOs:
 图片旋转
 */
+// var Base64 = require("../../utils/base64.js");
+const upng = require('../../utils/UPNG.js')
 
 const ctx = wx.createCanvasContext('cover-preview');
 var start_position;//移动图片时手指起始坐标
@@ -49,6 +51,9 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         tempFilePath = res.tempFilePaths[0];
+        // var Path = Base64.CusBASE64.encoder(tempFilePath);
+        // console.log("tempFilePath: ", tempFilePath,"本地图片路径base6458：", Path);
+
         wx.getImageInfo({
           src: tempFilePath,
           success: function (res) {
@@ -128,26 +133,26 @@ Page({
   //确定并上传背景图
   upload_bg: function () {
     var that = this;
-    wx.canvasToTempFilePath({//把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
-      x: screenWidth/10,
-      y: windowHeight/5,
-      width: screenWidth*0.8,
-      height: screenWidth * 0.8,
-      destWidth: screenWidth * 0.8,
-      destHeight: screenWidth * 0.8,
-      quality: 1,
+
+    wx.canvasGetImageData({
       canvasId: 'cover-preview',
-      success: function (res) {
-        // wx.saveImageToPhotosAlbum({
-        //   filePath: res.tempFilePath,
-        // })
-        
+      x: screenWidth / 10,
+      y: windowHeight / 5,
+      width: screenWidth * 0.8,
+      height: screenWidth * 0.8,
+      success(res) {
+        console.log(res)
+        // 3. png编码
+        let pngData = upng.encode([res.data.buffer], res.width, res.height)
+        // 4. base64编码
+        let base64 = 'data:image/jpg;base64,'+ wx.arrayBufferToBase64(pngData)
+        // console.log('base64: ',base64)
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2];  //上一个页面
 
         //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
         prevPage.setData({
-          imgPath: res.tempFilePath
+          imgPath: base64
         })
 
         wx.navigateBack({
@@ -155,6 +160,36 @@ Page({
         })
       }
     })
+
+    // wx.canvasToTempFilePath({//把当前画布指定区域的内容导出生成指定大小的图片，并返回文件路径。
+    //   x: screenWidth/10,
+    //   y: windowHeight/5,
+    //   width: screenWidth*0.8,
+    //   height: screenWidth * 0.8,
+    //   destWidth: screenWidth * 0.8,
+    //   destHeight: screenWidth * 0.8,
+    //   quality: 1,
+    //   canvasId: 'cover-preview',
+    //   success: function (res) {
+    //     // wx.saveImageToPhotosAlbum({
+    //     //   filePath: res.tempFilePath,
+    //     // })
+    //     // var Path = Base64.CusBASE64.encoder(res.tempFilePath);
+    //     // console.log("tempFilePath: ", tempFilePath,"本地图片路径base6458：", Path);
+
+    //     var pages = getCurrentPages();
+    //     var prevPage = pages[pages.length - 2];  //上一个页面
+
+    //     //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    //     prevPage.setData({
+    //       imgPath: res.tempFilePath
+    //     })
+
+    //     wx.navigateBack({
+    //       delta: 1
+    //     })
+    //   }
+    // })
   },
   //取消图片预览编辑
   cancel_croper: function () {
