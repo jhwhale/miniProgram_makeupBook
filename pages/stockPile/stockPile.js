@@ -15,7 +15,8 @@ Page({
       max: 100,
       size: 'small'
     },
-    copyId:''
+    copyId:'',
+    idList:[]
   },
 
   /**
@@ -47,11 +48,13 @@ Page({
 
     //将状态为0(want)的数据保存至list
     var tempList = [];
+    var ids =[]
     for (var i = 0; i < res.keys.length; i++) {
       try {
         var value = wx.getStorageSync(res.keys[i])
         if (value.status == 1) {//1:已购买
           tempList.push(value)
+          ids.push(value.id)
         }
       } catch (e) {
         wx.showToast({
@@ -62,6 +65,7 @@ Page({
     }
     this.setData({
       list: tempList,
+      idList:ids
     })
   },
 
@@ -123,6 +127,7 @@ Page({
     wx.showModal({
       content: "是否删除该条记录？",
       confirmText: "删除",
+      confirmColor:"#e84855",
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {

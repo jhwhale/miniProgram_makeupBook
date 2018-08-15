@@ -9,7 +9,9 @@
     </view> 
   </scroll-view>  
 
-  <button class='add' bindtap='addNew'>add</button>
+  <image class='add' src='../../images/plus_green.png' bindtap='addNew'></image>
+  <summation ids="{{idList}}"></summation>
+
   <modal id="modal" hidden="{{hiddenmodalput}}" confirm-text="确定" cancel-text="取消" bindcancel="cancelSetNum" bindconfirm="confirm">
     <view class='modal'>
       <text>选择复制数量：</text>

@@ -1,28 +1,29 @@
 <!--pages/edit/edit.wxml-->
+
 <form class='form' bindsubmit='submit'>
-  <view class='head'>
-    <image src="{{imgPath}}" bindtap='chooseImg'></image> 
-    <input name="name" class='name' auto-focus placeholder='产品名称' maxlength='15' value='{{name}}'></input>
+  <view class='top'>
+    <input name="name" auto-focus placeholder='产品名称' maxlength='15' value='{{name}}'></input>
   </view>
 
-  <view class='body'>
-
-    <view class='cell'>
+  <view class='middle'>
+    <image src="{{imgPath}}" bindtap='chooseImg'></image> 
+    <view class='middle_right'>
       <view class='property'>
         <text>色号：</text>
         <input name="color" class='inputBox' value='{{color}}'></input>
       </view>
-      <view class="property {{status>0?'property_show':'property_hidden'}}"> 
+      <view class="property"> 
         <text>单价：¥</text>
-        <input name="price" class='inputBox' type="number" value='{{price}}'></input>
+        <input name="price" class='inputBox' type="number" value='{{price}}'  disabled="{{status>0?'':'disabled'}}"></input>
       </view>
-      <view class="property {{status>0?'property_show':'property_hidden'}}">
+      <view class="property">
         <text>规格：</text>
-        <input name="size" class='inputBox' value='{{size}}'></input>
+        <input name="size" class='inputBox' value='{{size}}' disabled="{{status>0?'':'disabled'}}"></input>
       </view>
     </view>
+  </view>
 
-
+  <view class='bottom'>
     <view class="{{status>0 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>使用期限：</text>
@@ -48,7 +49,6 @@
       </view>
     </view>
 
-
     <view class="{{status==3 ? 'property_show' : 'property_hidden'}}">
       <view class="datePicker">
         <text>空盘日期：</text>
@@ -62,7 +62,9 @@
   </view>
 
   <view class="btn-area">
-    <button type="primary" formType="submit" size="mini">保存</button>
-    <button size="mini" bindtap='cancelSave'>取消</button>
+    <button size="mini" bindtap='cancelSave'style='background-color:#FFFFFF'>取消</button>
+    <button type="primary" formType="submit" size="mini"  style='background-color:#1b998b'>保存</button>
+    
   </view> 
+
 </form>

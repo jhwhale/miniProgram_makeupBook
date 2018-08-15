@@ -186,6 +186,7 @@ Page({
     wx.showModal({
       content: '确定不保存？',
       confirmText: "不保存",
+      confirmColor:"#1b998b",
       cancelText: "再改改",
       success: function (res) {
         if (res.confirm) {

@@ -1,19 +1,5 @@
 // component/searchBar/searchBar.js
 Component({
-  /**
-   * 组件的属性列表
-   */
-  // properties: {
-  //   inputText:{//用于在搜索结果页的搜索框内显示关键字
-  //     type:String,
-  //     value:'',
-  //     observer:function(newVal,oldVal){
-  //       this.setData({
-  //         keyword:newVal
-  //       })
-  //     }
-  //   }
-  // },
 
   /**
    * 组件的初始数据

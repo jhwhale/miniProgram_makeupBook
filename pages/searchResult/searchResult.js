@@ -188,6 +188,7 @@ Page({
     wx.showModal({
       content: "是否删除该条记录？",
       confirmText: "删除",
+      confirmColor: "#e84855",
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {

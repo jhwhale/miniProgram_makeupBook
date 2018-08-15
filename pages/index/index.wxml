@@ -10,6 +10,7 @@
     </view> 
   </scroll-view>  
 
-  <button class='add' bindtap='addNew'>add</button>  
-  <button class='clear'bindtap='clear'>clear</button>
+  <image class='add' src='../../images/plus_green.png' bindtap='addNew'></image> 
+  
+  <summation ids="{{idList}}"></summation>
 </view>

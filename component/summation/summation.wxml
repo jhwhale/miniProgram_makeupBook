@@ -1,0 +1,2 @@
+<!--component/summation/summation.wxml-->
+<text style='color:{{sumColor}}'>合计金额：¥{{summation}}</text>

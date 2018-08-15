@@ -1,15 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/wishlist/wishlist",
+    "pages/stockPile/stockPile",
+    "pages/doneList/doneList",
+
     "pages/edit/edit",
     "pages/chooseImg/chooseImg",
-    
-    "pages/stockPile/stockPile",
-    "pages/wishlist/wishlist",
-    
-    "pages/doneList/doneList",
     "pages/searchResult/searchResult"
-
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,33 +16,33 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "color": "#aaa",
-    "selectedColor": "black",
+    "color": "#d9d9d9",
+    "selectedColor": "#1b998b",
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "Hitpaning",
-        "iconPath": "images/icon_component.png",
-        "selectedIconPath": "images/icon_component_HL.png"
-      },
-      {
         "pagePath": "pages/wishlist/wishlist",
-        "text": "Wish List",
-        "iconPath": "images/icon_API.png",
-        "selectedIconPath": "images/icon_API_HL.png"
+        "text": "心愿单",
+        "iconPath": "images/love.png",
+        "selectedIconPath": "images/love_s.png"
       },
       {
         "pagePath": "pages/stockPile/stockPile",
-        "text": "Stockpile",
-        "iconPath": "images/icon_API.png",
-        "selectedIconPath": "images/icon_API_HL.png"
+        "text": "囤货",
+        "iconPath": "images/buy.png",
+        "selectedIconPath": "images/buy_s.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "使用中",
+        "iconPath": "images/using.png",
+        "selectedIconPath": "images/using_s.png"
       },
       {
         "pagePath": "pages/doneList/doneList",
-        "text": "Done List",
-        "iconPath": "images/icon_component.png",
-        "selectedIconPath": "images/icon_component_HL.png"
+        "text": "用完",
+        "iconPath": "images/done.png",
+        "selectedIconPath": "images/done_s.png"
       }
     ]
   }

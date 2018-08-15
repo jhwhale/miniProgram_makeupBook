@@ -11,7 +11,8 @@ const app = getApp()
 
 Page({
   data: {
-    list:[]
+    list:[],
+    idList:[]
   },
 
   onLoad: function () {
@@ -29,12 +30,15 @@ Page({
     }
 
     var tempList = [];
+    var ids = []
     for (var i = 0; i < res.keys.length; i++) {
       try {
         var value = wx.getStorageSync(res.keys[i])
         if (value.status == 2) {
           tempList.push(value)
+          ids.push(value.id)
         }
+
       } catch (e) {
         wx.showToast({
           title: '!!!getStorageSync出问题啦!!!',
@@ -42,10 +46,12 @@ Page({
         });
       }
     }
-
+    
     this.setData({
       list: tempList,
+      idList:ids
     }) 
+    console.log('id list: ',this.data.idList)
   },
 
   addNew:function(){
@@ -66,6 +72,7 @@ Page({
     wx.showModal({
       content: "是否删除该条记录？",
       confirmText: "删除",
+      confirmColor: "#e84855",
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {

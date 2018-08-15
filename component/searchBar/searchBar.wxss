@@ -24,10 +24,10 @@
 .searchBtn {
   height: 60rpx;
   width: auto;
-  /* line-height: 21px; */
   font-size: 40rpx; 
   position: absolute;
   top: 0;
   right: 0;
   padding:0 20rpx;
+  color: #1b998b;
 }

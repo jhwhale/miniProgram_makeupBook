@@ -1,9 +1,2 @@
 /**index.wxss**/
 @import "../common/list.wxss";
-
-.clear{
-  position: fixed;
-  bottom: 30rpx;
-  right: 200rpx;
-  background: #b4d145;
-}

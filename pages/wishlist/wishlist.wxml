@@ -9,6 +9,6 @@
     </view> 
   </scroll-view>  
 
-  <button class='add' bindtap='addNew'>add</button>
+  <image class='add' src='../../images/plus_green.png' bindtap='addNew'></image>
     
 </view>
